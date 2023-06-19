@@ -1,6 +1,6 @@
 <h2>GitHub OAuth Login Application</h2>
 <p>This is a login application built using React that allows users to authenticate with their GitHub accounts using the GitHub OAuth API. It also provides a feature to view and explore the trending repositories on GitHub.</p>
-
+You can view project in master branch.
 <h3>Features</h3>
 <ul>
   <li>User authentication using GitHub OAuth API.</li>
