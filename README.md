@@ -24,7 +24,7 @@ You can view project in master branch.
 <h3>Getting Started</h3>
 <p>To get started with the application, follow these steps:</p>
 <ol>
-  <li>Clone the repository: <b><em>git clone </em></b></li>
+  <li>Clone the repository: <b><em>git clone https://github.com/Himanshutomar12/github_oauth_login.git</em></b></li>
   <li>Install the dependecies in both the folder i.e. frontend and backend: <b><em>npm install</em></b></li>
   <li>Go to the frontend directory and start it: <b><em>npm start</em></b></li>
   <li>Go to the backend folder and start server: <b><em>node server.js</em></b></li>
