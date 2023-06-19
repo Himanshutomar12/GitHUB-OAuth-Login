@@ -33,8 +33,10 @@
 
 <h3>Usage</h3>
 <ul>
+![Main Image](https://github.com/Himanshutomar12/github_oauth_login/blob/main/main.png?raw=true)
 <li>Click on the "Login with GitHub" button to authenticate with your GitHub account.</li>
 <li>Once logged in, you will be redirected to the trending repositories page.</li>
+![Main Image](https://github.com/Himanshutomar12/github_oauth_login/blob/main/main-2.png?raw=true)
 <li>Explore the trending repositories by scrolling through the list.</li>
 <li>Click on a see more button to view more details.</li>
 <li>Logout by clicking on the "Sign out" button.</li>
