@@ -8,27 +8,28 @@ const client_id = process.env.CLIENT_ID;
 const client_secret = process.env.CLIENT_SECRET;
 
 const app = express();
-//app.use(bodyParser.urlencoded({ extended: true }));
-
-app.use(bodyParser.json());
-app.use(cors());
 app.use(session({
-    secret: 'secret-key', // Add a secret key for session encryption
+    secret: 'abcdefghijhklABCDELFHJSN', // Add a secret key for session encryption
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: true,
 }));
 
 
-app.post("/login", (req, res) => {
+app.use(bodyParser.json());
+app.use(cors());
+
+
+app.post("/login", async (req, res) => {
     const parameter = req.body;
-    axios.get("https://github.com/login/oauth/access_token?client_id=" + client_id + "&client_secret=" + client_secret + "&code=" + parameter.code, {
-        headers: {
-            'Accept': 'application/json'
-        }
-    }).then(response => {
+    try {
+        const response = await axios.get("https://github.com/login/oauth/access_token?client_id=" + client_id + "&client_secret=" + client_secret + "&code=" + parameter.code, 
+        {headers: {'Accept': 'application/json'}});
         req.session.accessToken = response.data.access_token;
+        console.log(response.data.access_token);
         res.json(response.data);
-    }).catch(error => res.json(error));
+    } catch (error) {
+        res.json(error);
+    }
 });
 
 
@@ -49,7 +50,8 @@ app.get("/getuser", async (req, res) => {
     try {
         const response = await axios.get("https://api.github.com/user", {
             headers: {
-                Authorization: `token ${para.accesstoken}`
+                'Authorization': `bearer ${para.accesstoken}`,
+                'Content-Type': 'application/json'
             }
         });
         res.json(response.data);
@@ -84,11 +86,9 @@ app.get("/getrepo", async (req, res) => {
         const response = await axios.get(`https://api.github.com/repos/${ownername}/${reponame}`);
         res.json(response.data);
     } catch (error) {
-        console.log(error);
         res.json(error);
     }
-})
-
+});
 
 const port = 3001;
 app.listen(port, () => {
